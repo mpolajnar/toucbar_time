@@ -1,4 +1,4 @@
-# TouchTest - MacOS Touch Bar Control Strip daemon
+# TouchbarTime - MacOS Touch Bar Control Strip clock
 
 Example of adding an icon to the Control Strip region of the Mac Touch Bar using
 a headless/UI-less background app.  Icon is always displayed, regardless of which
@@ -6,13 +6,7 @@ app is in the foreground.
 
 Uses a private API, not suitable for the App Store.
 
-No XCode project, no Nib/Xib, builds from command-line.  Just the minimum
-necessary to add an always-available button to the Control Strip.
-
-<img src="https://github.com/mrmekon/touchtest/blob/master/screenshot.png" width="800">
-
-Inspired by: https://github.com/a2/touch-baer
-
+Inspired by: https://github.com/mrmekon/touchtest
 ## Usage
 
 ### Build
