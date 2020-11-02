@@ -1,12 +1,13 @@
 # TouchbarTime - MacOS Touch Bar Control Strip clock
 
-Example of adding an icon to the Control Strip region of the Mac Touch Bar using
-a headless/UI-less background app.  Icon is always displayed, regardless of which
-app is in the foreground.
+A Touch Bar Control Strip region icon displaying current time.
 
 Uses a private API, not suitable for the App Store.
 
-Inspired by: https://github.com/mrmekon/touchtest
+A fork of https://github.com/liqwid/touchbar_time. Improves on it by restoring the icon every 10 seconds
+because otherwise it gets replaced by the system multimedia app selector whenever any supported
+multimedia application is started.
+
 ## Usage
 
 ### Build
@@ -14,31 +15,7 @@ Inspired by: https://github.com/mrmekon/touchtest
 $ make
 ```
 
-### Build and launch
-```
-$ make run
-```
+### Use
 
-### Kill running daemon
-```
-$ make kill
-```
-
-### Cleanup
-```
-$ make clean
-```
-
-### Design Notes
-
-Links against private framework DFRFoundation.
-
-Uses two DFRFoundation functions: ```DFRElementSetControlStripPresenceForIdentifier``` and ```DFRSystemModalShowsCloseBoxWhenFrontMost```
-
-Uses private NSTouchBarItem method: ```+(void)addSystemTrayItem:(NSTouchBarItem *)item;```
-
-Uses private NSTouchBar method: ```+(void)presentSystemModalFunctionBar:(NSTouchBar *)touchBar systemTrayItemIdentifier:(NSString *)identifier;```
-
-Simply creates a windowless NSApplication and an NSApplicationDelegate implementing the private functions.
-
-**MUST** execute from a mac _.app_ bundle.  The TouchBar service doesn't seem to communicate with a binary when launched outside of a bundle.  I did not investigate why.
+- copy the produced touchbar_time.app to your Applications folder
+- if you wish, you can make it start on system startup in the Users preferences pane
