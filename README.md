@@ -2,6 +2,8 @@
 
 A Touch Bar Control Strip region icon displaying current time.
 
+![Screenshot](screenshot.jpg)
+
 Uses a private API, not suitable for the App Store.
 
 A fork of https://github.com/liqwid/touchbar_time. Improves on it by restoring the icon every 10 seconds
