@@ -15,7 +15,7 @@
  */
 #import <Cocoa/Cocoa.h>
 
-static const NSTouchBarItemIdentifier kGroupButton = @"com.trevorbentley.group";
+static const NSTouchBarItemIdentifier kGroupButton = @"care.better.time";
 
 extern void DFRElementSetControlStripPresenceForIdentifier(NSString *, BOOL);
 extern void DFRSystemModalShowsCloseBoxWhenFrontMost(BOOL);
@@ -77,7 +77,19 @@ NSTouchBar *_groupTouchBar;
   item = [[NSCustomTouchBarItem alloc] initWithIdentifier:kGroupButton];
   item.view = timeButton;
   [NSTouchBarItem addSystemTrayItem:item];
-  DFRElementSetControlStripPresenceForIdentifier(kGroupButton, YES);
+
+  NSThread* putButtonThread = [ [NSThread alloc] initWithTarget:self
+                                selector:@selector( keepRegisteringToControlStrip )
+                                object:nil ];
+
+    [ putButtonThread start ];
+}
+
+- (void)keepRegisteringToControlStrip {
+  while(YES) {
+    DFRElementSetControlStripPresenceForIdentifier(kGroupButton, YES);
+    [NSThread sleepForTimeInterval:10.0f];
+  }
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
